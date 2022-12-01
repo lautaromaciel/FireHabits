@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import { catchError, delay, delayWhen, fromEvent, observable, Observable, of, Subject, switchMap, tap, throwError } from 'rxjs';
-import { EventEmitter } from 'stream';
+import { Component, OnInit} from '@angular/core';
+import { catchError, of, switchMap } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -18,6 +18,10 @@ export class AppComponent implements OnInit{
   }
 
   constructor(private http : HttpClient){}
+
+  ngOnInit(): void {
+
+  }
 
   registroUsuario(evento : any){
     const valor : string = evento.target.value;
@@ -43,7 +47,7 @@ export class AppComponent implements OnInit{
     .subscribe(res =>{
       if(res.usuario){
         this.usuarioActual = res.usuario;
-        this.actualizarListaDeHabitos(this.usuarioActual);
+        this.actualizarEstadoDeHabitos(this.usuarioActual);
       }
     })
 
@@ -60,6 +64,19 @@ export class AppComponent implements OnInit{
         this.habitos = res.habitos;
       }
     });
+  }
+
+  actualizarEstadoDeHabitos(usuarioActual : any){
+
+    const json = {
+      "id" : usuarioActual._id
+    }
+
+    this.http.put<any>(`http://localhost:8080/api/usuarios/actualizacion`, json)
+    .subscribe(()=>{
+      this.actualizarListaDeHabitos(usuarioActual);
+    });
+
   }
 
   agregarHabito(){
@@ -103,9 +120,7 @@ export class AppComponent implements OnInit{
 
   }
 
-  ngOnInit(): void {
 
-  }
 
 }
 

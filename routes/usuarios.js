@@ -10,7 +10,7 @@ routes.post("/",crearUsuario);
 
 routes.get("/:nombre",getUsuario);
 
-routes.put("/api/usuarios/actualizacion", actualizarHabitosUsuario);
+routes.put("/actualizacion", actualizarHabitosUsuario);
 
 
 module.exports = routes;

@@ -10,7 +10,7 @@ const actualizarHabito = async(req,res)=>{
 
   const fechaActualizacion = new Date(habito.fechaActualizacion);
 
-  if(fechaHoy.getTime() > fechaActualizacion.setHours(00,00,00)){
+  if(fechaHoy.getTime() > fechaActualizacion.setUTCHours(00,00,00)){
       habito.racha++;
       const fechaHoyMs = fechaHoy.getTime();
       const diaMs = 1000 * 60 * 60 * 24;

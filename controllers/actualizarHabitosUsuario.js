@@ -8,12 +8,12 @@ const actualizarHabitosUsuario = async (req,res)=>{
 
   habitos.forEach(async (habito) =>{
 
-      const fechaHoy = fechaActual();
-      const fechaActualizacion = new Date(habito.fechaActualizacion);
+    const fechaHoy = fechaActual();
+    const fechaActualizacion = new Date(habito.fechaActualizacion);
 
-      if(fechaHoy.getTime() > fechaActualizacion.setHours(00,00,00)){
-          habito.completado = false;
-      }
+    if(fechaHoy.getTime() > fechaActualizacion.setUTCHours(00,00,00)){
+      habito.completado = false;
+    }
 
       await habito.save();
 
