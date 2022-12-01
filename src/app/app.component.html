@@ -22,7 +22,11 @@
         <input type="text" class="mt-3 form-control"
          placeholder="Titulo" [(ngModel)]="habitoActual.titulo"
          name="titulo">
-        <div class="editor-calendario"></div>
+        <div class="editor-calendario">
+          <app-calendario>
+
+          </app-calendario>
+        </div>
         <input type="submit" class="btn btn-success" value="Confirmar">
       </form>
     </div>

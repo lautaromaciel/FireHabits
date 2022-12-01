@@ -1,0 +1,29 @@
+.calendario-container{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+ol{
+  text-align: center;
+  padding: 0.5rem;
+  margin: 0;
+  flex-grow: 1;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  overflow: hidden;
+}
+
+.primer-dia{
+  grid-column-start: 5;
+}
+
+.calendario-dia{
+  margin: 0.1rem;
+  // background-color: #69d;
+  font-weight: 700;
+}
+
+

@@ -1,0 +1,23 @@
+
+<div class="calendario-container">
+  <h5 class="d-inline text-center">
+    <button class="btn btn-primary btn-sm float-start" (click)="mesAnterior($event)">atras</button>
+    {{titulo}}
+    <button class="btn btn-primary btn-sm float-end" (click)="proximoMes($event)"> siguiente</button></h5>
+  <ol>
+    <li class="calendario-dia">Lun</li>
+    <li class="calendario-dia">Mar</li>
+    <li class="calendario-dia">Mie</li>
+    <li class="calendario-dia">Jue</li>
+    <li class="calendario-dia">Vie</li>
+    <li class="calendario-dia">Sab</li>
+    <li class="calendario-dia">Dom</li>
+    <li class="calendario-fecha"
+     *ngFor="let dia of fechas; let primerDia = first"
+     [ngStyle]="{
+       'grid-column-start': primerDia ? dia.semanaIndex : 'auto',
+       'background-color' : dia.marca ? '#69d' : 'auto'
+      }"
+     >{{dia.numero}}</li>
+  </ol>
+</div>
