@@ -16,6 +16,7 @@ const actualizarHabito = async(req,res)=>{
       const diaMs = 1000 * 60 * 60 * 24;
       habito.fechaActualizacion = new Date(fechaHoyMs + diaMs).toJSON();
       habito.completado = true;
+      habito.fechas.push(fechaHoy);
       await habito.save();
       res.json({
           msg : "hábito actualizado",

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
@@ -6,7 +6,9 @@ import * as moment from 'moment';
   templateUrl: './calendario.component.html',
   styleUrls: ['./calendario.component.scss']
 })
-export class CalendarioComponent implements OnInit {
+export class CalendarioComponent implements OnInit, OnChanges {
+
+  @Input() habitoSeleccionado : any;
 
   fechasMarcadas : any[] = [];
   fechas : any[] = [];
@@ -21,16 +23,18 @@ export class CalendarioComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    const dia1 = moment().format();
-    const dia2 = moment().add(5,"day").format();
-    const dia3 = moment().add(10,"day").format();
-    const dia4 = moment().add(15,"day").format();
-    const dia5 = moment().add(20,"day").format();
-    const dia6 = moment().add(25,"day").format();
-    const dia7 = moment().add(30,"day").format();
-
-    this.fechasMarcadas.push(dia1,dia2,dia3,dia4,dia5,dia6,dia7);
-    // console.log(this.fechas);
+    // this.fechasMarcadas = [];
+    // this.crearCalendario();
+  }
+  ngOnChanges(){
+    if(this.habitoSeleccionado){
+      // let array = []
+      this.fechasMarcadas = this.habitoSeleccionado.fechas;
+      // for(let i = 0; i<400000;i++){
+      //   array.push(moment().add(i,"days"))
+      // }
+      // this.fechasMarcadas = array;
+    }
     this.crearCalendario();
   }
 
@@ -48,6 +52,7 @@ export class CalendarioComponent implements OnInit {
   }
 
   crearCalendario(fecha?:any){
+    this.fechas = [];
 
     const fechaActual = fecha ? fecha : moment();
     this.fechaActual = fechaActual.clone();
@@ -60,10 +65,15 @@ export class CalendarioComponent implements OnInit {
 
     for(let i = 0 ;i < difReal; i++){
 
-      const diaSinFormatear = i != 0 ? fechaActual.add(1,"days") : fechaActual;
+      const diaSinFormatear = i != 0 ? fechaInicio.add(1,"days") : fechaInicio;
+
       const diaFormateado = diaSinFormatear.clone().format();
       const semanaIndex = diaSinFormatear.clone().isoWeekday();
-      const marca = this.fechasMarcadas.includes(diaFormateado);
+
+      /* Acá voy a implementar algún algortimo para optimizar el código, ya tengo unas ideas */
+      const marca = this.fechasMarcadas.some(fechaM =>{
+        return moment(fechaM).format("DD MM YYYY") === diaSinFormatear.clone().format("DD MM YYYY");
+      });
 
       const dia = {
         formatoStandar : diaFormateado,
@@ -75,7 +85,6 @@ export class CalendarioComponent implements OnInit {
       this.fechas.push(dia);
 
     }
-    console.log(this.fechas)
   }
 
 

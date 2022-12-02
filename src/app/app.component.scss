@@ -31,6 +31,12 @@
     background-color: #ccc;
     overflow-y: scroll;
   }
+  .lista-habito{
+    background-color: #fff;
+  }
+  .lista-habito--selected{
+    background-color: blue;
+  }
 
   .usuario-container{
     height: 25rem;

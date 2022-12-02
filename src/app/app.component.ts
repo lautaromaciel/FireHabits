@@ -13,9 +13,10 @@ export class AppComponent implements OnInit{
   listaVisible = false;
   usuarioActual!: any;
   habitos : any[] = [];
-  habitoActual = {
+  habitoEnEdicion = {
     titulo: ""
   }
+  habitoSeleccionado : any;
 
   constructor(private http : HttpClient){}
 
@@ -58,7 +59,7 @@ export class AppComponent implements OnInit{
 
   actualizarListaDeHabitos(usuarioActual : any){
     this.habitos = [];
-    this.http.get<any>(`http://localhost:8080/api/habitos/${usuarioActual._id}`)
+    this.http.get<any>(`http://localhost:8080/api/habitos/all/${usuarioActual._id}`)
     .subscribe(res=>{
       if(res && res.habitos.length > 0){
         this.habitos = res.habitos;
@@ -80,7 +81,8 @@ export class AppComponent implements OnInit{
   }
 
   agregarHabito(){
-    const titulo = this.habitoActual.titulo;
+    console.log("Agregar Habito");
+    const titulo = this.habitoEnEdicion.titulo;
     const json = {
       "titulo": titulo,
       "racha" : 0,
@@ -96,7 +98,9 @@ export class AppComponent implements OnInit{
 
   }
 
-  eliminarHabito(habito:any){
+  eliminarHabito(habito:any,event:any){
+
+    event.stopPropagation()
 
     const id = habito._id;
     const json = { "id": id };
@@ -108,7 +112,9 @@ export class AppComponent implements OnInit{
 
   }
 
-  completarHabito(habito:any){
+  completarHabito(habito:any,event:any){
+
+    event.stopPropagation()
 
     const id = habito._id;
     // const json = { "id": id };
@@ -120,6 +126,25 @@ export class AppComponent implements OnInit{
 
   }
 
+  /* Visual */
+  removerSeleccionesV(){
+    const habitoElements = document.querySelectorAll(".lista-habito");
+    habitoElements.forEach(elemento=>{
+      elemento.classList.remove("lista-habito--selected");
+    })
+  }
+
+  seleccionarHabito(event : Event,habito:any){
+    this.habitoSeleccionado = habito;
+    event.stopPropagation();
+    const habitoElementSelected = <HTMLDivElement>event.currentTarget;
+
+    this.removerSeleccionesV();
+
+    habitoElementSelected.classList.add("lista-habito--selected");
+
+
+  }
 
 
 }
