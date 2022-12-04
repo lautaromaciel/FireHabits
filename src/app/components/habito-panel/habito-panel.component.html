@@ -1,9 +1,37 @@
 
 <div class="habito-panel-container">
-  <mat-tab-group color="dark">
-    <mat-tab label="First" class="" > Content 1 </mat-tab>
-    <mat-tab label="Second" class=""> Content 2 </mat-tab>
-    <mat-tab label="Third" class=""> Content 3 </mat-tab>
-  </mat-tab-group>
-  <!-- <p>habito-panel works!</p> -->
+  <div class="habito-panel-head">
+    <div class="input-container">
+      <input *ngIf="panel == 'agregar' && !tituloActual"
+      (keyup.enter)="definirTitulo($event)"
+      type="text"
+      class="input"
+      placeholder="Nombre del Habito">
+      <h3 *ngIf="tituloActual">{{tituloActual}}</h3>
+      <button class="editar-button" *ngIf="tituloActual && panel == 'agregar'" (click)="editarTitulo()">
+        <img src="../../../assets/editar.svg" class="editar-icon" alt="">
+      </button>
+    </div>
+    <div class="botones-container">
+      <button class="botones" (click)="cambiarPanel('agregar')">Agregar</button>
+      <button class="botones" (click)="cambiarPanel('actualizar')">Actualizar</button>
+    </div>
+  </div>
+  <div class="habito-panel-body">
+    <div *ngIf="panel == 'agregar'" class="agregar-container">
+        <!-- <app-calendario class="calendario"></app-calendario> -->
+        <div class="fire-container">
+          <img src="../../../assets/fire2.png" alt="">
+          <!-- <span class="fire-racha">#1</span> -->
+          <button class="fire-button">Agregar Habito</button>
+        </div>
+    </div>
+    <div *ngIf="panel == 'actualizar'" class="actualizar-container">
+      <app-calendario class="calendario"></app-calendario>
+        <div class="fire-container">
+          <img src="../../../assets/fire2.png" alt="">
+          <span class="fire-racha">#1</span>
+          <button class="fire-button">Actualizar</button>
+        </div>
+    </div>
 </div>

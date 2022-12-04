@@ -78,13 +78,11 @@
 .panel-izquierdo{
   display: flex;
   flex-direction: column;
-  // background-color: blue;
   height: 28rem;
 }
 .panel-derecho{
-  // display: flex;
-  // flex-direction: column;
-  // background-color: blue;
+  padding: 1rem;
+  background-color: #ccc;
   height: 28rem;
 }
 .panel-lista{
