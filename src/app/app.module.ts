@@ -15,6 +15,7 @@ import { CalendarioComponent } from './components/calendario/calendario.componen
 import { ListaDeHabitosComponent } from './components/lista-de-habitos/lista-de-habitos.component';
 import { LoginComponent } from './components/login/login.component';
 import { HabitoPanelComponent } from './components/habito-panel/habito-panel.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { HabitoPanelComponent } from './components/habito-panel/habito-panel.com
     HttpClientModule,
     FormsModule,
     MatTabsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
