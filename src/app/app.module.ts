@@ -3,18 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import {MatChipsModule} from '@angular/material/chips';
+/* Material */
 import {MatCardModule} from '@angular/material/card';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
+import { ListaDeHabitosComponent } from './components/lista-de-habitos/lista-de-habitos.component';
+import { LoginComponent } from './components/login/login.component';
+import { HabitoPanelComponent } from './components/habito-panel/habito-panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CalendarioComponent
+    CalendarioComponent,
+    ListaDeHabitosComponent,
+    LoginComponent,
+    HabitoPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +30,8 @@ import { CalendarioComponent } from './components/calendario/calendario.componen
     MatChipsModule,
     MatCardModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

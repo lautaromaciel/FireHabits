@@ -1,0 +1,27 @@
+<div class="login-container">
+
+  <div class="login-titulo-default" *ngIf="!usuarioActual">
+    <h3>Bienvenido a Fire Habits!</h3>
+    <h5>Ingrese su Usuario Por Favor</h5>
+  </div>
+  <h2 *ngIf="usuarioActual;" class="login-titulo"> Hola {{usuarioActual.nombre}}!</h2>
+
+  <div class="login-interaccion">
+    <input
+    class="login-input"
+    type="text"
+    [ngClass]="{
+      'mover' : inputAnimacion.mover,
+      'ocultar' : inputAnimacion.esconder
+    }"
+    (keyup.enter)="registroUsuario($event)"
+    placeholder="Usuario">
+    <span
+      [hidden]="inputVisible"
+      (click)="cambiarUsuario()"
+      class="btn btn-dark login-boton">
+      Cambiar de usuario</span>
+  </div>
+
+
+</div>

@@ -1,0 +1,14 @@
+<div class="lista-habitos_container" *ngIf="listaDeHabitos.length > 0">
+  <ul>
+    <li
+    class="mb-1"
+    *ngFor="let habito of listaDeHabitos"
+    (click)="seleccionar(habito)">
+    <mat-card [class.seleccionado]="habito == habitoSeleccionado">
+        <mat-card-content>
+          {{habito.titulo}}
+        </mat-card-content>
+      </mat-card>
+    </li>
+  </ul>
+</div>

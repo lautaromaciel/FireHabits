@@ -4,7 +4,16 @@
   </div>
   <div class="body">
 
-    <div class="usuario-container">
+    <div class="panel-izquierdo">
+
+      <app-login (usuarioRegistrado)="setUsuario($event)"></app-login>
+
+      <app-lista-de-habitos [listaDeHabitos]="habitos" class="panel-lista" >
+      </app-lista-de-habitos>
+
+    </div>
+
+    <!-- <div class="usuario-container">
       <mat-card class="usuario">
         <mat-card-header>
           <mat-card-title>Usuario</mat-card-title>
@@ -14,9 +23,9 @@
           <input type="text" (keyup.enter)="registroUsuario($event)">
         </mat-card-content>
       </mat-card>
-    </div>
+    </div> -->
 
-    <div class="editor-container">
+    <!-- <div class="editor-container">
       <form (ngSubmit)="agregarHabito()" action="" class="d-flex flex-column">
         <label for="" >Titulo</label>
         <input type="text" class="mt-3 form-control"
@@ -29,9 +38,15 @@
         </div>
         <input type="submit" class="btn btn-success" value="Confirmar">
       </form>
+    </div> -->
+
+    <div class="panel-derecho">
+      <app-habito-panel>
+
+      </app-habito-panel>
     </div>
 
-    <div class="lista-container" *ngIf="usuarioActual && habitos">
+    <!-- <div class="lista-container" *ngIf="usuarioActual && habitos">
       <mat-card #habito class="m-3 lista-habito" *ngFor="let habito of habitos" (click)="seleccionarHabito($event,habito)">
         <mat-card-content>{{habito.titulo}} #{{habito.racha}}</mat-card-content>
         <mat-card-actions>
@@ -43,7 +58,7 @@
           </button>
         </mat-card-actions>
       </mat-card>
-    </div>
+    </div> -->
 
   </div>
 </div>

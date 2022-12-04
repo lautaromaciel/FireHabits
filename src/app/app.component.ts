@@ -51,10 +51,6 @@ export class AppComponent implements OnInit{
         this.actualizarEstadoDeHabitos(this.usuarioActual);
       }
     })
-
-    // this.http.post("http://localhost:8080/api/usuarios", usuario).subscribe(res =>{
-    //   console.log(res);
-    // })
   }
 
   actualizarListaDeHabitos(usuarioActual : any){
@@ -143,7 +139,11 @@ export class AppComponent implements OnInit{
 
     habitoElementSelected.classList.add("lista-habito--selected");
 
+  }
 
+  setUsuario(usuario:any){
+    this.actualizarEstadoDeHabitos(usuario);
+    this.usuarioActual = usuario;
   }
 
 
