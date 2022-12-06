@@ -16,6 +16,15 @@ export class HabitosService {
     return this.http.post<any>("http://localhost:8080/api/usuarios", usuario);
   }
 
+  crearHabito(habito:any){
+    return this.http.post<any>("http://localhost:8080/api/habitos",habito)
+  }
+
+  eliminarHabito(habitoId:any){
+    return this.http.request("delete","http://localhost:8080/api/habitos",{body:habitoId});
+  }
+
+
 
 
 }

@@ -114,8 +114,11 @@ app-calendario{
     bottom: 1rem;
     right: 1rem;
     border-radius: 0.5rem;
-    background-color: blue;
+    background-color: orangered;
     color: #fff;
+  }
+  .fire-button:disabled{
+    background-color: #333;
   }
 
 

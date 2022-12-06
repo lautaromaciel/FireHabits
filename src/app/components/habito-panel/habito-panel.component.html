@@ -23,7 +23,10 @@
         <div class="fire-container">
           <img src="../../../assets/fire2.png" alt="">
           <!-- <span class="fire-racha">#1</span> -->
-          <button class="fire-button">Agregar Habito</button>
+          <button class="fire-button"
+           (click)="agregarHabito()"
+           [disabled]="!tituloActual"
+           >Agregar Habito</button>
         </div>
     </div>
     <div *ngIf="panel == 'actualizar'" class="actualizar-container">

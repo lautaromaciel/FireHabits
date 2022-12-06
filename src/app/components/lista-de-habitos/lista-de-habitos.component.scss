@@ -21,3 +21,27 @@ ul{
   background-color: blue;
 }
 
+
+.habito-card{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.boton-eliminar{
+  height: 2rem;
+  width: 2rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.boton-eliminar:hover{
+  transform: rotate(-20deg);
+  outline: none;
+}
+.eliminar-icon{
+  filter: invert(0.4) sepia(1) hue-rotate(-45deg) saturate(500%);
+  height: 100%;
+  width: 100%;
+}
+

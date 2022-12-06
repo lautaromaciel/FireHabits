@@ -6,9 +6,14 @@
 
     <div class="panel-izquierdo">
 
-      <app-login (usuarioRegistrado)="setUsuario($event)"></app-login>
+      <app-login
+       (usuarioRegistrado)="setUsuario($event)"
+      ></app-login>
 
-      <app-lista-de-habitos [listaDeHabitos]="habitos" class="panel-lista" >
+      <app-lista-de-habitos
+        [listaDeHabitos]="habitos"
+        class="panel-lista"
+        (seEliminoHabito)="actualizarListaDeHabitos(usuarioActual)">
       </app-lista-de-habitos>
 
     </div>
@@ -41,8 +46,9 @@
     </div> -->
 
     <div class="panel-derecho">
-      <app-habito-panel>
-
+      <app-habito-panel
+       [usuarioActual]="usuarioActual"
+       (seAgregoHabito)="actualizarListaDeHabitos(usuarioActual)">
       </app-habito-panel>
     </div>
 

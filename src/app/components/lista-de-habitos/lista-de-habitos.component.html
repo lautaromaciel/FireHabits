@@ -5,8 +5,11 @@
     *ngFor="let habito of listaDeHabitos"
     (click)="seleccionar(habito)">
     <mat-card [class.seleccionado]="habito == habitoSeleccionado">
-        <mat-card-content>
+        <mat-card-content class="habito-card">
           {{habito.titulo}}
+          <button class="boton-eliminar" (click)="abrirModal(habito,$event)" >
+            <img class="eliminar-icon" src="../../../assets/eliminar.svg" alt="">
+          </button>
         </mat-card-content>
       </mat-card>
     </li>
