@@ -4,67 +4,39 @@
   </div>
   <div class="body">
 
-    <div class="panel-izquierdo">
+    <div class="paneles">
+      <div class="panel-izquierdo">
 
-      <app-login
-       (usuarioRegistrado)="setUsuario($event)"
-      ></app-login>
+        <app-login
+          (usuarioRegistrado)="setUsuario($event)"
+        ></app-login>
 
-      <app-lista-de-habitos
-        [listaDeHabitos]="habitos"
-        class="panel-lista"
-        (seEliminoHabito)="actualizarListaDeHabitos(usuarioActual)">
-      </app-lista-de-habitos>
+        <app-lista-de-habitos
+          *ngIf="usuarioActual"
+          class="panel-lista"
+          [listaDeHabitos]="habitos"
+          (seEliminoHabito)="actualizarListaDeHabitos()"
+          (seSeleccionoHabito)="setHabito($event)"
+          [habitoSeleccionado]="habitoSeleccionado"
+          >
+        </app-lista-de-habitos>
 
-    </div>
-
-    <!-- <div class="usuario-container">
-      <mat-card class="usuario">
-        <mat-card-header>
-          <mat-card-title>Usuario</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <label for="">Ingrese su usuario</label>
-          <input type="text" (keyup.enter)="registroUsuario($event)">
-        </mat-card-content>
-      </mat-card>
-    </div> -->
-
-    <!-- <div class="editor-container">
-      <form (ngSubmit)="agregarHabito()" action="" class="d-flex flex-column">
-        <label for="" >Titulo</label>
-        <input type="text" class="mt-3 form-control"
-         placeholder="Titulo" [(ngModel)]="habitoEnEdicion.titulo"
-         name="titulo">
-        <div class="editor-calendario">
-          <app-calendario [habitoSeleccionado]="habitoSeleccionado">
-
-          </app-calendario>
+        <div *ngIf="!usuarioActual" class="login-decorator">
+          <img src="../assets/fire2.png" alt="">
         </div>
-        <input type="submit" class="btn btn-success" value="Confirmar">
-      </form>
-    </div> -->
 
-    <div class="panel-derecho">
-      <app-habito-panel
-       [usuarioActual]="usuarioActual"
-       (seAgregoHabito)="actualizarListaDeHabitos(usuarioActual)">
-      </app-habito-panel>
+      </div>
+
+      <div class="panel-derecho" *ngIf="usuarioActual">
+        <app-habito-panel
+         [usuarioActual]="usuarioActual"
+         [habitoSeleccionado]="habitoSeleccionado"
+         (seAgregoHabito)="actualizarListaDeHabitos()"
+         (seActualizoHabito)="actualizarEstadoDeHabitos(usuarioActual)">
+        </app-habito-panel>
+      </div>
     </div>
 
-    <!-- <div class="lista-container" *ngIf="usuarioActual && habitos">
-      <mat-card #habito class="m-3 lista-habito" *ngFor="let habito of habitos" (click)="seleccionarHabito($event,habito)">
-        <mat-card-content>{{habito.titulo}} #{{habito.racha}}</mat-card-content>
-        <mat-card-actions>
-          <button class="btn btn-danger btn-sm" (click)="eliminarHabito(habito,$event)">Eliminar</button>
-          <button class="btn btn-primary btn-sm ms-1"
-            (click)="completarHabito(habito,$event)"
-            [disabled]="habito.completado">
-            Actualizar
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </div> -->
 
   </div>
 </div>

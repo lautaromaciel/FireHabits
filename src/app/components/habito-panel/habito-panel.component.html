@@ -1,5 +1,6 @@
 
 <div class="habito-panel-container">
+
   <div class="habito-panel-head">
     <div class="input-container">
       <input *ngIf="panel == 'agregar' && !tituloActual"
@@ -7,34 +8,49 @@
       type="text"
       class="input"
       placeholder="Nombre del Habito">
-      <h3 *ngIf="tituloActual">{{tituloActual}}</h3>
+      <h3 *ngIf="tituloActual && panel=='agregar'">{{tituloActual}}</h3>
+      <h3 *ngIf="panel=='actualizar'">{{habitoSeleccionado.titulo}}</h3>
       <button class="editar-button" *ngIf="tituloActual && panel == 'agregar'" (click)="editarTitulo()">
         <img src="../../../assets/editar.svg" class="editar-icon" alt="">
       </button>
     </div>
     <div class="botones-container">
-      <button class="botones" (click)="cambiarPanel('agregar')">Agregar</button>
-      <button class="botones" (click)="cambiarPanel('actualizar')">Actualizar</button>
+      <button class="head-botones"
+        [class.activo]="panel == 'agregar' "
+        (click)="cambiarPanel('agregar')">
+        Agregar
+      </button>
+      <button class="head-botones"
+        [class.activo]="panel == 'actualizar'"
+        [disabled]="!habitoSeleccionado"
+        (click)="cambiarPanel('actualizar')">
+        Actualizar
+        </button>
     </div>
   </div>
+
   <div class="habito-panel-body">
+
     <div *ngIf="panel == 'agregar'" class="agregar-container">
-        <!-- <app-calendario class="calendario"></app-calendario> -->
         <div class="fire-container">
           <img src="../../../assets/fire2.png" alt="">
-          <!-- <span class="fire-racha">#1</span> -->
           <button class="fire-button"
            (click)="agregarHabito()"
            [disabled]="!tituloActual"
            >Agregar Habito</button>
         </div>
     </div>
+
     <div *ngIf="panel == 'actualizar'" class="actualizar-container">
-      <app-calendario class="calendario"></app-calendario>
+      <app-calendario class="calendario" [habitoSeleccionado]="habitoSeleccionado"></app-calendario>
         <div class="fire-container">
           <img src="../../../assets/fire2.png" alt="">
-          <span class="fire-racha">#1</span>
-          <button class="fire-button">Actualizar</button>
+          <span class="fire-racha">{{habitoSeleccionado.racha}}</span>
+          <button class="fire-button"
+           (click)="completarHabitoActual()"
+           [disabled]="habitoSeleccionado.completado"
+           >Actualizar</button>
         </div>
     </div>
+  </div>
 </div>

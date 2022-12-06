@@ -16,11 +16,13 @@ ul{
   mat-card{
     background-color: #fff;
   }
+  mat-card:hover{
+    transform: scale(1.03);
+  }
 
 .seleccionado{
-  background-color: blue;
+  background-color: #ffc471;
 }
-
 
 .habito-card{
   display: flex;

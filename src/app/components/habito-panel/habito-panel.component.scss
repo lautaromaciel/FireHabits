@@ -19,12 +19,16 @@
   overflow: hidden;
 }
 
-.botones{
+.head-botones{
   font-size: 1.1rem;
   border: 1px solid #000;
   outline: none;
   padding: 1rem;
 }
+.head-botones:hover{
+  // transform: scale(1.03);
+}
+
 
 .input-container{
   font-size: 1.3rem;
@@ -120,6 +124,10 @@ app-calendario{
   .fire-button:disabled{
     background-color: #333;
   }
+  .fire-button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+  }
 
 
 .editar-icon{
@@ -134,4 +142,8 @@ app-calendario{
   border: none;
   outline: none;
   background-color: transparent;
+}
+
+.activo{
+  transform: scale(1.03);
 }

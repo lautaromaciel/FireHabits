@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { HabitosService } from 'src/app/habitos.service';
 
 @Component({
@@ -6,16 +6,27 @@ import { HabitosService } from 'src/app/habitos.service';
   templateUrl: './habito-panel.component.html',
   styleUrls: ['./habito-panel.component.scss']
 })
-export class HabitoPanelComponent implements OnInit {
+export class HabitoPanelComponent implements OnInit,OnChanges {
 
   panel : string = "agregar";
   tituloActual! : string ;
   @Input() usuarioActual : any;
+  @Input() habitoSeleccionado : any;
   @Output() seAgregoHabito = new EventEmitter();
+  @Output() seActualizoHabito = new EventEmitter();
 
   constructor(private habitosSv : HabitosService) { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(): void {
+    if(this.habitoSeleccionado){
+      this.cambiarPanel("actualizar");
+    }else{
+      this.tituloActual = "";
+      this.cambiarPanel("agregar");
+    }
   }
 
   agregarHabito(){
@@ -36,15 +47,12 @@ export class HabitoPanelComponent implements OnInit {
 
   }
 
-
-
-
-
-
-
-
-
-
+  completarHabitoActual(){
+    const id = this.habitoSeleccionado._id;
+    this.habitosSv.actualizarHabito(id).subscribe(res=>{
+      this.seActualizoHabito.emit("");
+    })
+  }
 
   /* Funciones Visuales */
   cambiarPanel(accion :string){
@@ -53,7 +61,6 @@ export class HabitoPanelComponent implements OnInit {
 
   definirTitulo(evento:any){
     this.tituloActual = evento.target.value;
-    console.log(this.tituloActual);
   }
   editarTitulo(){
     this.tituloActual = "";

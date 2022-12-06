@@ -1,24 +1,25 @@
 .contenedor{
   display: block;
-  background-color: #000;
+  background-color: #36f;
   height: 100vh;
   width: 100vw;
 }
 
-.header{
-  text-align: center;
-  background-color: #36f;
-  margin: 0;
-  padding:2rem 0;
-}
-.header-titulo{
-  color: #bbb;
-  font-size: 7rem;
-}
-.header-img{
-  height: 8rem;
-  transform: translateY(-1rem);
-}
+  .header{
+    text-align: center;
+    background-color: #36f;
+    margin: 0;
+    padding:2rem 0;
+  }
+    .header-titulo{
+      color: #fff;
+      font-size: 7rem;
+    }
+    .header-img{
+      height: 8rem;
+      transform: translateY(-1rem);
+    }
+
 .body{
   flex-grow: 1;
   display: flex;
@@ -26,68 +27,46 @@
   align-items: center;
 }
 
-  .lista-container{
-    height: 25rem;
-    background-color: #ccc;
-    overflow-y: scroll;
-  }
-  .lista-habito{
-    background-color: #fff;
-  }
-  .lista-habito--selected{
-    background-color: blue;
-  }
-
-  .usuario-container{
-    height: 25rem;
-    width: 18rem;
-    background-color: #ccc;
-    padding: 1rem;
-  }
-
-    .usuario{
-      background-color: #fff;
-      height: 100%;
-    }
-
-  .editor-container{
-    padding: 1rem;
-    height: 28rem;
-    width: 25rem;
+  .paneles{
+    display: flex;
+    border-radius: 1rem;
+    padding: 0.5rem;
     background-color: #ccc;
   }
+    .panel-izquierdo{
+      display: flex;
+      flex-direction: column;
+      height: 28rem;
+    }
+      .login-decorator{
+        flex-grow: 1;
+        display: flex;
+      }
+        .login-decorator img{
+          filter: grayscale(7);
+          height: 15rem;
+          margin: auto;
+        }
 
-    .editor-container form{
-      height: 100%;
-      width: 100%;
-      background-color: #fff;
+
+    .panel-derecho{
+      padding: 1rem;
+      background-color: #ccc;
+      height: 28rem;
+    }
+    .panel-lista{
+      flex-grow: 1;
+      background-color: #ccc;
+      overflow: hidden;
     }
 
-    .editor-calendario{
-      margin: auto;
-      height: 12rem;
-      width: 80%;
-      border: 3px solid #000;
-    }
 
-// .containerr{
-//   height: 25rem;
-// }
+@media screen and (max-width:800px){
+  .paneles{
+    flex-direction: column;
+    font-size: 10px;
+  }
 
+}
 
-.panel-izquierdo{
-  display: flex;
-  flex-direction: column;
-  height: 28rem;
-}
-.panel-derecho{
-  padding: 1rem;
-  background-color: #ccc;
-  height: 28rem;
-}
-.panel-lista{
-  flex-grow: 1;
-  background-color: #ccc;
-  overflow: hidden;
-}
 

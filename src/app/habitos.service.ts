@@ -24,6 +24,16 @@ export class HabitosService {
     return this.http.request("delete","http://localhost:8080/api/habitos",{body:habitoId});
   }
 
+  actualizarHabito(habitoId:any){
+    return this.http.put(`http://localhost:8080/api/habitos/actualizacion/${habitoId}`,{});
+  }
+
+  actualizarListadoDeHabitos(usuarioId:any){
+    return this.http.get<any>(`http://localhost:8080/api/habitos/all/${usuarioId}`)
+  }
+  actualizarEstadoDeHabitos(usuarioIdJson:any){
+    return this.http.put<any>(`http://localhost:8080/api/usuarios/actualizacion`, usuarioIdJson);
+  }
 
 
 

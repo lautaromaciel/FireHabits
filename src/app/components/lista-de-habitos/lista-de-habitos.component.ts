@@ -13,7 +13,7 @@ export class ListaDeHabitosComponent implements OnInit {
   @Input() listaDeHabitos : any;
   @Output() seEliminoHabito = new EventEmitter();
   @Output() seSeleccionoHabito = new EventEmitter();
-  habitoSeleccionado : any;
+  @Input() habitoSeleccionado : any;
 
 
   constructor(private habitosSv :HabitosService ,public dialog : MatDialog) { }
@@ -22,8 +22,13 @@ export class ListaDeHabitosComponent implements OnInit {
   }
 
   seleccionar(habito:any){
-    this.habitoSeleccionado = habito;
-    this.seSeleccionoHabito.emit(habito);
+    if(habito == this.habitoSeleccionado){
+      this.habitoSeleccionado = null;
+      this.seSeleccionoHabito.emit(this.habitoSeleccionado);
+    }else{
+      this.habitoSeleccionado = habito;
+      this.seSeleccionoHabito.emit(this.habitoSeleccionado);
+    }
   }
 
   abrirModal(habito:any ,event:any){
@@ -46,6 +51,9 @@ export class ListaDeHabitosComponent implements OnInit {
 
     this.habitosSv.eliminarHabito(json).subscribe( res =>{
       this.seEliminoHabito.emit(res);
+      if(this.habitoSeleccionado && this.habitoSeleccionado._id == id){
+        this.seSeleccionoHabito.emit(null);
+      }
     })
 
   }
