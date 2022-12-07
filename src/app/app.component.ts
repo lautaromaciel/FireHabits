@@ -11,12 +11,8 @@ import { HabitosService } from './habitos.service';
 })
 export class AppComponent implements OnInit{
   title = 'habitosAngular';
-  listaVisible = false;
   usuarioActual!: any;
   habitos : any[] = [];
-  habitoEnEdicion = {
-    titulo: ""
-  }
   habitoSeleccionado : any;
 
   constructor(private http : HttpClient,private habitosSv :HabitosService){}

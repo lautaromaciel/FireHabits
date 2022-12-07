@@ -147,3 +147,23 @@ app-calendario{
 .activo{
   transform: scale(1.03);
 }
+
+@media screen and (max-width:800px) {
+  .habito-panel-container{
+    // position: fixed;
+    // padding: 1rem;
+    width: 100%;
+    min-width: unset;
+    max-width: unset;
+  }
+  .habito-panel-body{
+    width: 100%;
+    overflow: unset;
+  }
+  .agregar-container{
+    overflow: unset;
+  }
+  .actualizar-container{
+    overflow: unset;
+  }
+}

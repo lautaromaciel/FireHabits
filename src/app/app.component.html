@@ -5,6 +5,7 @@
   <div class="body">
 
     <div class="paneles">
+
       <div class="panel-izquierdo">
 
         <app-login
@@ -27,14 +28,18 @@
 
       </div>
 
-      <div class="panel-derecho" *ngIf="usuarioActual">
+
+      <div class="panel-derecho"*ngIf="usuarioActual" >
         <app-habito-panel
+         class="w-100"
          [usuarioActual]="usuarioActual"
          [habitoSeleccionado]="habitoSeleccionado"
          (seAgregoHabito)="actualizarListaDeHabitos()"
          (seActualizoHabito)="actualizarEstadoDeHabitos(usuarioActual)">
         </app-habito-panel>
       </div>
+
+
     </div>
 
 

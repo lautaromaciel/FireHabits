@@ -11,6 +11,6 @@ if (environment.production) {
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 
-console.log("%cFire Habits Front - Versión 1.0","color:blue");
+console.log("%cFire Habits Front - Versión 1.1","color:blue");
 
 

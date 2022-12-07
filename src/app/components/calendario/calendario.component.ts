@@ -72,7 +72,7 @@ export class CalendarioComponent implements OnInit, OnChanges {
 
       /* Acá voy a implementar algún algortimo para optimizar el código, ya tengo unas ideas */
       const marca = this.fechasMarcadas.some(fechaM =>{
-        return moment(fechaM).format("DD MM YYYY") === diaSinFormatear.clone().format("DD MM YYYY");
+        return moment(fechaM.substring(0,10)).format("DD MM YYYY") === diaSinFormatear.clone().format("DD MM YYYY");
       });
 
       const dia = {
