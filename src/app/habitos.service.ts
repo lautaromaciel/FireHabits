@@ -9,30 +9,30 @@ export class HabitosService {
   constructor(private http : HttpClient ) { }
 
   getUsuario(usuarioNombre:string){
-    return this.http.get<any>(`http://localhost:8080/api/usuarios/${usuarioNombre}`);
+    return this.http.get<any>(`http://89.116.214.110:8080/api/usuarios/${usuarioNombre}`);
   }
 
   crearUsuario(usuario:any){
-    return this.http.post<any>("http://localhost:8080/api/usuarios", usuario);
+    return this.http.post<any>("http://89.116.214.110:8080/api/usuarios", usuario);
   }
 
   crearHabito(habito:any){
-    return this.http.post<any>("http://localhost:8080/api/habitos",habito)
+    return this.http.post<any>("http://89.116.214.110:8080/api/habitos",habito)
   }
 
   eliminarHabito(habitoId:any){
-    return this.http.request("delete","http://localhost:8080/api/habitos",{body:habitoId});
+    return this.http.request("delete","http://89.116.214.110:8080/api/habitos",{body:habitoId});
   }
 
   actualizarHabito(habitoId:any){
-    return this.http.put(`http://localhost:8080/api/habitos/actualizacion/${habitoId}`,{});
+    return this.http.put(`http://89.116.214.110:8080/api/habitos/actualizacion/${habitoId}`,{});
   }
 
   actualizarListadoDeHabitos(usuarioId:any){
-    return this.http.get<any>(`http://localhost:8080/api/habitos/all/${usuarioId}`)
+    return this.http.get<any>(`http://89.116.214.110:8080/api/habitos/all/${usuarioId}`)
   }
   actualizarEstadoDeHabitos(usuarioIdJson:any){
-    return this.http.put<any>(`http://localhost:8080/api/usuarios/actualizacion`, usuarioIdJson);
+    return this.http.put<any>(`http://89.116.214.110:8080/api/usuarios/actualizacion`, usuarioIdJson);
   }
 
 
