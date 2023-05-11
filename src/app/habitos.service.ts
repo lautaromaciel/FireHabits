@@ -9,30 +9,30 @@ export class HabitosService {
   constructor(private http : HttpClient ) { }
 
   getUsuario(usuarioNombre:string){
-    return this.http.get<any>(`https:fireHabits.online/api/usuarios/${usuarioNombre}`);
+    return this.http.get<any>(`./api/usuarios/${usuarioNombre}`);
   }
 
   crearUsuario(usuario:any){
-    return this.http.post<any>("https:fireHabits.online/api/usuarios", usuario);
+    return this.http.post<any>("./api/usuarios", usuario);
   }
 
   crearHabito(habito:any){
-    return this.http.post<any>("https:fireHabits.online/api/habitos",habito)
+    return this.http.post<any>("./api/habitos",habito)
   }
 
   eliminarHabito(habitoId:any){
-    return this.http.request("delete","https:fireHabits.online/api/habitos",{body:habitoId});
+    return this.http.request("delete","./api/habitos",{body:habitoId});
   }
 
   actualizarHabito(habitoId:any){
-    return this.http.put(`https:fireHabits.online/api/habitos/actualizacion/${habitoId}`,{});
+    return this.http.put(`./api/habitos/actualizacion/${habitoId}`,{});
   }
 
   actualizarListadoDeHabitos(usuarioId:any){
-    return this.http.get<any>(`https:fireHabits.online/api/habitos/all/${usuarioId}`)
+    return this.http.get<any>(`./api/habitos/all/${usuarioId}`)
   }
   actualizarEstadoDeHabitos(usuarioIdJson:any){
-    return this.http.put<any>(`https:fireHabits.online/api/usuarios/actualizacion`, usuarioIdJson);
+    return this.http.put<any>(`./api/usuarios/actualizacion`, usuarioIdJson);
   }
 
 
